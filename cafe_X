@@ -1,0 +1,24 @@
+object cafe_X extends App {
+ val shopping_list = List ("coffee","steak_sandwich","cola","cheese_sandwich") // create list of items
+
+  var total = BigDecimal(0)
+  for (item <- shopping_list){  // iterate over each item in list ad give total amount for each item
+    if(item == "coffee") total += 1
+    else if(item == "steak_sandwich") total += 4.5
+    else if(item == "cheese_sandwich") total += 2
+    else if(item == "cola") total += 0.5
+  }
+println("your total bill is £" + f"$total%1.2f")   //prints total bill before service charge
+
+  var service_charge = BigDecimal(0)
+  if(!shopping_list.contains("steak_sandwich") && !shopping_list.contains("cheese_sandwich")) service_charge = BigDecimal(0) // if list no food then service charge is 0
+  if(shopping_list.contains("steak_sandwich") || shopping_list.contains("cheese_sandwich")) service_charge = BigDecimal(0.1) //if list contains food service charge is 10%
+  if(shopping_list.contains("steak_sandwich")) service_charge = BigDecimal(0.2) //if list contains hot food service charge is 20%
+
+  var new_service_charge = (service_charge / total)*100 //works out service charge to add on
+  if(new_service_charge > 20) new_service_charge = 20  // if service charge for hot food is greater than £20 the charge will stay at 20
+  total += new_service_charge
+
+  println("your total service charge is £" + f"$new_service_charge%1.2f") //prints total service charge
+  println("your total amount payable  is £" + f"$total%1.2f") // prints overall total payable amount
+  }
