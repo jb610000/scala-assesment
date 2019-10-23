@@ -21,9 +21,6 @@ class Cafe_test extends FunSuite {
     assert(test === 1)
   }
 
-  test("if no items are added to the list the result should be 0"){
-    val test = Cafe_X.bill(List("cola", "cola"))
-    assert(test === 1)
-  }
+
 
 }
